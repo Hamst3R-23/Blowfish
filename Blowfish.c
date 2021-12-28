@@ -207,7 +207,7 @@ void Key_extension(char *key8, int tmp_key){
     int tmp = 0;
     for (int i = 0; i <= 17; i++){
 		tmp = i * 4;
-        Keys_new[i] = Keys_basic[i] ^ (((uint32_t)key8[(tmp % tmp_key)] << 24) + ((uint32_t)key8[((tmp + 1) % (tmp_key-1))] << 16) + ((uint32_t)key8[((tmp + 2) % (tmp_key-1))] << 8) + ((uint32_t)key8[((tmp + 3) % (tmp_key-1))]));
+        Keys_new[i] = Keys_basic[i] ^ (((uint32_t)key8[(tmp % tmp_key)] << 24) + ((uint32_t)key8[((tmp + 1) % (tmp_key))] << 16) + ((uint32_t)key8[((tmp + 2) % (tmp_key))] << 8) + ((uint32_t)key8[((tmp + 3) % (tmp_key))]));
     }
 
     for (int i = 0; i <= 3; i++){
@@ -233,7 +233,6 @@ void Key_extension(char *key8, int tmp_key){
             tmp_1 = Feistel(tmp_2);
         }
     }
-	for (int i = 0; i <= 17; i++) printf("%lx\n", Keys_new[i]);
 }
 
 uint64_t Feistel(uint64_t number){
